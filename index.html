@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KYC Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="form-container">
+        <h1>KYC Form</h1>
+        <div class="form-section">
+            <h2>A. Identity Details</h2>
+            <form id="kycForm">
+                <div class="form-group">
+                    <label for="applicantFirstName" style="font-weight: 600;">1. Name of the Applicant</label>
+                    <div class="name-inputs">
+                        <input type="text" id="applicantFirstName" name="applicantFirstName" placeholder="First Name" required>
+                        <input type="text" id="applicantLastName" name="applicantLastName" placeholder="Last Name" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="fatherName" style="font-weight: 600;">2. Father's/Spouse's Name</label>
+                    <div class="name-inputs">
+                        <input type="text" id="fatherFirstName" name="fatherFirstName" placeholder="First Name" required>
+                        <input type="text" id="fatherLastName" name="fatherLastName" placeholder="Last Name" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="flex-group">
+                        <div class="form-half">
+                            <label style="font-weight: 600;">2a. Gender</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="gender" value="male" required> Male</label>
+                                <label><input type="radio" name="gender" value="female" required> Female</label>
+                            </div>
+                        </div>
+
+                        <div class="form-half">
+                            <label style="font-weight: 600;">2b. Marital Status</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="maritalStatus" value="single" required> Single</label>
+                                <label><input type="radio" name="maritalStatus" value="married" required> Married</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="dob" style="font-weight: 600;">2c. Date of Birth</label><br>
+                    <input type="date" id="dob" name="dob" placeholder="MM-DD-YYYY">
+                    <small id="dobError" class="error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="nationality" style="font-weight: 600;">3. Nationality</label><br>
+                    <select id="nationality" name="nationality" style="width: 30%;height: 30px;">
+                        <option value="">Please Select</option>
+                        <option value="indian">Indian</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <small id="nationalityError" class="error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="pan" style="font-weight: 600;">5. PAN</label><br>
+                    <input type="text" id="pan" name="pan" placeholder="Enter PAN">
+                    <small id="panError" class="error"></small>
+                </div>
+
+                <h2>B. Address Details</h2>
+                
+                    <div class="form-group">
+                        <label for="address" style="font-weight: 600;">1. Address for Correspondence</label><br>
+                        <input type="text" id="streetAddress" name="streetAddress" placeholder="Street Address" style="width: 100%;"><br><br>
+                        <input type="text" id="streetAddress2" name="streetAddress2" placeholder="Street Address Line 2" style="width: 100%;"><br><br>
+                        <div class="address-inputs">
+                            <input type="text" id="city" name="city" placeholder="City" style="width: 49%;">
+                            <input type="text" id="state" name="state" placeholder="State / Province" style="width: 49%; margin-left: 6px;"><br><br>
+                        </div>
+                        <div class="address-inputs">
+                            <input type="text" id="zipCode" name="zipCode" placeholder="Postal / Zip Code" style="width: 49%; margin-right: 5px;">
+                            <select id="country" name="country" style="width: 30%;height: 30px;">
+                                <option value="">Country</option>
+                                <option value="india">India</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <small id="addressError" class="error"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" style="font-weight: 600;">2. Phone Number</label><br>
+                        <input type="tel" id="phone" name="phone" placeholder="(000) 000-0000">
+                        <small id="phoneError" class="error"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" style="font-weight: 600;">3. Email</label><br>
+                        <input type="email" id="email" name="email" placeholder="example@example.com">
+                        <small id="emailError" class="error"></small>
+                    </div>
+
+                    <div class="file-upload">
+                        <h2>C. File Upload</h2>
+                    </div>
+                    
+                    <p>Please upload related photographs and documents</p> <br>
+                    
+                    <div class="upload-container">
+                        <form id="uploadForm">
+                            <div class="file-upload">
+                                <label for="photoUpload">Customer Photo: <span style="color: red;">*</span> (Size between 20kb to 50kb)</label>
+                                <input type="file" id="photoUpload" name="photo" accept="image/jpeg" required>
+                                <div class="image-preview" id="photoPreview">
+                                    <img src="placeholder.jpg" alt="" id="photoPreviewImg">
+                                </div>
+                                <small id="photoError" class="error"></small>
+
+                            </div>
+                
+                            <div class="file-upload">
+                                <label for="signatureUpload">Customer Signature: <span style="color: red;">*</span> (Size between 5kb to 50kb)</label>
+                                <input type="file" id="signatureUpload" name="signature" accept="image/jpeg" required>
+                                <div class="image-preview" id="signaturePreview">
+                                    <img src="placeholder-signature.jpg" alt="" id="signaturePreviewImg">
+                                </div>
+                                <small id="signError" class="error"></small>
+
+                            </div>
+                
+                            <div class="button">
+                                <input type="submit" value="Submit">
+                            </div>
+                        </form>
+                    </div>
+                
+                
+        </div>
+    </div>
+    <script src="validation.js"></script>
+
+</body>
+</html>
