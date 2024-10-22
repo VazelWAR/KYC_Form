@@ -92,11 +92,11 @@ document.addEventListener("DOMContentLoaded", function() {
             photoError.textContent = 'Customer photo is required';
             isValid = false;
         } else {
-            const photoSize = photoUpload.files[0].size / 1024;
-            if (photoSize > 1000 || photoSize < 5000) {
+            const photoSize = photoUpload.files[0].size / (1024 * 1024);
+            if (photoSize > 10) {
                 photoError.textContent = 'Invalid Photo Size';
                 isValid = false;
-            }
+            } 
         }
 
         // Validate Signature Upload (size between 5KB - 50KB)
@@ -104,9 +104,9 @@ document.addEventListener("DOMContentLoaded", function() {
             photoError.textContent = 'Customer signature is required';
             isValid = false;
         } else {
-            const signatureSize = signatureUpload.files[0].size / 1024;
-            if (signatureSize > 1000 || signatureSize < 5000) {
-                photoError.textContent = 'Invalid Photo Size';
+            const signatureSize = signatureUpload.files[0].size / (1024 * 1024);
+            if (signatureSize > 10) {
+                signError.textContent = 'Invalid Photo Size';
                 isValid = false;
             }
         }
@@ -114,7 +114,10 @@ document.addEventListener("DOMContentLoaded", function() {
         // If the form is invalid, prevent submission
         if (!isValid) {
             event.preventDefault();
-        } 
+        } else {
+            event.preventDefault();
+            window.location.href = './success.html';
+        }
     });
 });
 
